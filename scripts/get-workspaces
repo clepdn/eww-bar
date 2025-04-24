@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+MONITOR=DP-2
+spaces() {
+	#OBJ1=$(hyprctl workspaces -j | jq -c '[.[] | select(.monitor=="'"$MONITOR"'") | { id, monitor, lastwindow }] | map({key: .lastwindow, value: .id}) | from_entries')
+	OBJ1=$(hyprctl workspaces -j | jq -c '[.[] | { id, monitor, lastwindow }] | map({key: .lastwindow, value: {id: .id, mon: .monitor } }) | from_entries')
+	OBJ2=$(hyprctl clients -j | jq -c 'map({key: .address, value: .initialClass}) | from_entries')
+
+	node ~/.config/eww/scripts/filter.js "$OBJ1" "$OBJ2"
+}
+#spaces (){
+#  WORKSPACE_WINDOWS=$(hyprctl workspaces -j | jq 'map({key: .id | tostring, value: .windows}) | from_entries')
+#  seq 1 10 | jq --argjson windows "${WORKSPACE_WINDOWS}" --slurp -Mc 'map(tostring) | map({id: ., windows: ($windows[.]//0)})'
+#}
+
+spaces
+socat -u UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r line; do
+  spaces
+done
+
