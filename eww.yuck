@@ -113,7 +113,7 @@
 				:space-evenly false
 			
 				(label :text "${jq(EWW_BATTERY, ".BAT0.capacity")}% ")
-				(label :text "${jq(EWW_BATTERY, ".BAT0.status", "r")}")
+				(label :text "${jq(EWW_BATTERY, "if .BAT0.status != \"Discharging\" then .BAT0.status else empty end", "r")}")
 			)
 			(systray
 				:spacing 1
