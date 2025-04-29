@@ -109,6 +109,12 @@
 			:halign "end"
 			:space-evenly false
 			:spacing 10
+			(box
+				:space-evenly false
+			
+				(label :text "${jq(EWW_BATTERY, ".BAT0.capacity")}% ")
+				(label :text "${jq(EWW_BATTERY, ".BAT0.status", "r")}")
+			)
 			(systray
 				:spacing 1
 				:icon-size 20
