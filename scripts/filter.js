@@ -6,7 +6,18 @@ let list = [ "org", "net", "com", "cafe" ]
 
 for (const [addr, props] of Object.entries(a)) {
 	const { id, mon } = props
-	const obj = {id: id.toString(), class: b[addr], mon: mon === "DP-2" ? 0 : 1 }
+	const monitors = { 
+		"DP-2": 0,
+		"DP-4": 1,
+		"eDP-1": -1
+	}
+
+	const obj = {
+		id: id.toString(),
+		class: b[addr],
+		//mon: mon === "DP-2" ? 0 : 1
+		mon: monitors[mon]
+	}
 
 	// Destroy the NSID.
 	if (obj.class?.includes(".")) {

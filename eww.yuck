@@ -81,3 +81,40 @@
 	)
 )
 
+(defwindow laptop 
+	   :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "0px"
+                               :width "100%"
+                               :height "30px"
+                               :anchor "top center")
+	   :namespace "bar"
+	   :exclusive true
+           :stacking "bg"
+           :reserve (struts :distance "40px" :side "top")
+           :windowtype "dock"
+           :wm-ignore false
+	(box 
+		:orientation "h"
+		:space-evenly false 
+		:spacing 15
+		(workspaces
+			:mon -1
+		)
+		(box
+			:hexpand true
+		)
+		(box
+			:orientation "h"
+			:halign "end"
+			:space-evenly false
+			:spacing 10
+			(systray
+				:spacing 1
+				:icon-size 20
+			)
+			(label :text "${formattime(EWW_TIME, "%-I:%M", "America/New_York")}")
+			(label) ;; some padding
+		)
+	)
+)
