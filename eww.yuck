@@ -7,7 +7,7 @@
   (eventbox :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
     (box :space-evenly true
       (label :text "${workspaces}${current_workspace}" :visible false)
-      ;;(for workspace in "${jq(workspaces, "[.[] | select(.mon==\"DP-2\")")}]"
+      ;;(for workspace in "${jq(workspaces, "[.[] | select(.mon==\"DP-1\")")}]"
       (for workspace in "${jq(workspaces, "[ .[] | select(.mon == ${mon}) ]")}"
       	(eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
           ;;(box :class "workspace-entry ${workspace.windows > 0 ? "occupied" : "empty"}"
@@ -22,7 +22,7 @@
 ;; regular bar
 
 (defwindow primary
-	   :monitor "DP-2"
+	   :monitor "DP-1"
            :geometry (geometry :x "0%"
                                :y "0px"
                                :width "100%"
@@ -59,7 +59,7 @@
 	)
 )
 (defwindow secondary 
-	   :monitor "DP-4"
+	   :monitor "DP-3"
            :geometry (geometry :x "0%"
                                :y "0px"
                                :width "100%"
