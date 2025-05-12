@@ -7,8 +7,8 @@ let list = [ "org", "net", "com", "cafe" ]
 for (const [addr, props] of Object.entries(a)) {
 	const { id, mon } = props
 	const monitors = { 
-		"DP-2": 0,
-		"DP-4": 1,
+		"DP-1": 0,
+		"DP-3": 1,
 		"eDP-1": -1
 	}
 

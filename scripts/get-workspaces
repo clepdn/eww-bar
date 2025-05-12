@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-MONITOR=DP-2
 spaces() {
-	#OBJ1=$(hyprctl workspaces -j | jq -c '[.[] | select(.monitor=="'"$MONITOR"'") | { id, monitor, lastwindow }] | map({key: .lastwindow, value: .id}) | from_entries')
 	OBJ1=$(hyprctl workspaces -j | jq -c '[.[] | { id, monitor, lastwindow }] | map({key: .lastwindow, value: {id: .id, mon: .monitor } }) | from_entries')
 	OBJ2=$(hyprctl clients -j | jq -c 'map({key: .address, value: .initialClass}) | from_entries')
 
