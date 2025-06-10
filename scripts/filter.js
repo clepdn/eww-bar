@@ -9,7 +9,7 @@ for (const [addr, props] of Object.entries(a)) {
 	const monitors = { 
 		"DP-2": 0,
 		"DP-4": 1,
-		"eDP-2": -1
+		"eDP-1": -1
 	}
 
 	const obj = {
