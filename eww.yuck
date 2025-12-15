@@ -21,6 +21,10 @@
     )
   )
 
+;;(defwidget niri 
+;;
+;;)
+
 (defwidget time []
 	(label :text "${formattime(EWW_TIME, "%-I:%M", "America/New_York")}")
 )
@@ -50,7 +54,7 @@
 ;; regular bar
 
 (defwindow primary
-	   :monitor "DP-2"
+	   :monitor "DP-1"
            :geometry (geometry :x "0%"
                                :y "0px"
                                :width "100%"
@@ -87,7 +91,7 @@
 	)
 )
 (defwindow secondary 
-	   :monitor "DP-4"
+	   :monitor "DP-3"
            :geometry (geometry :x "0%"
                                :y "0px"
                                :width "100%"
